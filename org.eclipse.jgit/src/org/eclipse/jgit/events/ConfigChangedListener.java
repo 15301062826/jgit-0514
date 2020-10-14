@@ -53,5 +53,4 @@ public interface ConfigChangedListener extends RepositoryListener {
 	 * @param event
 	 *            information about the changes.
 	 */
-	void onConfigChanged(ConfigChangedEvent event);
-}
+
