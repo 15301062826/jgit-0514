@@ -12,6 +12,11 @@
  * Redistribution and use in source and binary forms, with or
  * without modification, are permitted provided that the following
  * conditions are met:
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or
+ * without modification, are permitted provided that the following
+ * conditions are met:
  *
  * - Redistributions of source code must retain the above copyright
  *   notice, this list of conditions and the following disclaimer.
@@ -898,6 +903,12 @@ public class RepoCommand extends GitCommand<RevCommit> {
 		}
 
 		StringJoiner j = new StringJoiner(SLASH);
+		for (int i = common; i < cs.length; i++) {
+			j.add(".."); //$NON-NLS-1$
+		}
+		for (int i = common; i < ds.length; i++) {
+			j.add(ds[i]);
+		}StringJoiner j = new StringJoiner(SLASH);
 		for (int i = common; i < cs.length; i++) {
 			j.add(".."); //$NON-NLS-1$
 		}
