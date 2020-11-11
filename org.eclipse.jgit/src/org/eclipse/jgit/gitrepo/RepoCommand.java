@@ -920,10 +920,8 @@ public class RepoCommand extends GitCommand<RevCommit> {
 		return URI.create(j.toString());
 	}
 
-	private static String findRef(String ref, Repository repo)
-			throws IOException {
-		if (!ObjectId.isId(ref)) {
-			Ref r = repo.exactRef(R_REMOTES + DEFAULT_REMOTE_NAME + "/" + ref); //$NON-NLS-1$
+	
+			
 			if (r != null)
 				return r.getName();
 		}
