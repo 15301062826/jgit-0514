@@ -170,10 +170,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 		 *            The ref (branch/tag/etc.) to read
 		 * @param path
 		 *            The relative path (inside the repo) to the file to read
-		 * @return the file content.
-		 * @throws GitAPIException
-		 * @throws IOException
-		 * @since 3.5
+		 * @retur
 		 *
 		 * @deprecated Use {@link #readFileWithMode(String, String, String)}
 		 *             instead
@@ -354,10 +351,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 	/**
 	 * Set base URI of the paths inside the XML. This is typically the name of
 	 * the directory holding the manifest repository, eg. for
-	 * https://android.googlesource.com/platform/manifest, this should be
-	 * /platform (if you would run this on android.googlesource.com) or
-	 * https://android.googlesource.com/platform elsewhere.
-	 *
+	 * https:
 	 * @param uri
 	 *            the base URI
 	 * @return this command
@@ -590,12 +584,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 			parser.read(inputStream);
 			filteredProjects = parser.getFilteredProjects();
 		} catch (IOException e) {
-			throw new ManifestErrorException(e);
-		} finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-				// Just ignore it, it's not important.
+		// Just ignore it, it's not important.
 			}
 		}
 
@@ -687,11 +676,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 							} else {
 								link = proj.getPath() + "/" + linkfile.src; //$NON-NLS-1$
 							}
-
-							objectId = inserter.insert(Constants.OBJ_BLOB,
-									link.getBytes(UTF_8));
-							dcEntry = new DirCacheEntry(linkfile.dest);
-							dcEntry.setObjectId(objectId);
+bjectId(objectId);
 							dcEntry.setFileMode(FileMode.SYMLINK);
 							builder.add(dcEntry);
 						}
