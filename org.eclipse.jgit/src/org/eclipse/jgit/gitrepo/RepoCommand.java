@@ -12,6 +12,11 @@
  * Redistribution and use in source and binary forms, with or
  * without modification, are permitted provided that the following
  * conditions are met:
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or
+ * without modification, are permitted provided that the following
+ * conditions are met:
  *
  * - Redistributions of source code must retain the above copyright
  *   notice, this list of conditions and the following disclaimer.
@@ -165,10 +170,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 		 *            The ref (branch/tag/etc.) to read
 		 * @param path
 		 *            The relative path (inside the repo) to the file to read
-		 * @return the file content.
-		 * @throws GitAPIException
-		 * @throws IOException
-		 * @since 3.5
+		 * @retur
 		 *
 		 * @deprecated Use {@link #readFileWithMode(String, String, String)}
 		 *             instead
@@ -349,10 +351,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 	/**
 	 * Set base URI of the paths inside the XML. This is typically the name of
 	 * the directory holding the manifest repository, eg. for
-	 * https://android.googlesource.com/platform/manifest, this should be
-	 * /platform (if you would run this on android.googlesource.com) or
-	 * https://android.googlesource.com/platform elsewhere.
-	 *
+	 * https:
 	 * @param uri
 	 *            the base URI
 	 * @return this command
@@ -585,12 +584,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 			parser.read(inputStream);
 			filteredProjects = parser.getFilteredProjects();
 		} catch (IOException e) {
-			throw new ManifestErrorException(e);
-		} finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-				// Just ignore it, it's not important.
+		// Just ignore it, it's not important.
 			}
 		}
 
@@ -682,11 +676,7 @@ public class RepoCommand extends GitCommand<RevCommit> {
 							} else {
 								link = proj.getPath() + "/" + linkfile.src; //$NON-NLS-1$
 							}
-
-							objectId = inserter.insert(Constants.OBJ_BLOB,
-									link.getBytes(UTF_8));
-							dcEntry = new DirCacheEntry(linkfile.dest);
-							dcEntry.setObjectId(objectId);
+bjectId(objectId);
 							dcEntry.setFileMode(FileMode.SYMLINK);
 							builder.add(dcEntry);
 						}
@@ -903,16 +893,20 @@ public class RepoCommand extends GitCommand<RevCommit> {
 		}
 		for (int i = common; i < ds.length; i++) {
 			j.add(ds[i]);
+		}StringJoiner j = new StringJoiner(SLASH);
+		for (int i = common; i < cs.length; i++) {
+			j.add(".."); //$NON-NLS-1$
+		}
+		for (int i = common; i < ds.length; i++) {
+			j.add(ds[i]);
 		}
 
 		j.add(destFile);
 		return URI.create(j.toString());
 	}
 
-	private static String findRef(String ref, Repository repo)
-			throws IOException {
-		if (!ObjectId.isId(ref)) {
-			Ref r = repo.exactRef(R_REMOTES + DEFAULT_REMOTE_NAME + "/" + ref); //$NON-NLS-1$
+	
+			
 			if (r != null)
 				return r.getName();
 		}

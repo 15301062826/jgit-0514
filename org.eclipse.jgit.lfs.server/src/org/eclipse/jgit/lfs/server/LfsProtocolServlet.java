@@ -223,25 +223,7 @@ public abstract class LfsProtocolServlet extends HttpServlet {
 			res.setStatus(SC_OK);
 			TransferHandler handler = TransferHandler
 					.forOperation(request.operation, repo, request.objects);
-			LfsGson.toJson(handler.process(), w);
-		} catch (LfsValidationError e) {
-			sendError(res, w, SC_UNPROCESSABLE_ENTITY, e.getMessage());
-		} catch (LfsRepositoryNotFound e) {
-			sendError(res, w, SC_NOT_FOUND, e.getMessage());
-		} catch (LfsRepositoryReadOnly e) {
-			sendError(res, w, SC_FORBIDDEN, e.getMessage());
-		} catch (LfsRateLimitExceeded e) {
-			sendError(res, w, SC_RATE_LIMIT_EXCEEDED, e.getMessage());
-		} catch (LfsBandwidthLimitExceeded e) {
-			sendError(res, w, SC_BANDWIDTH_LIMIT_EXCEEDED, e.getMessage());
-		} catch (LfsInsufficientStorage e) {
-			sendError(res, w, SC_INSUFFICIENT_STORAGE, e.getMessage());
-		} catch (LfsUnavailable e) {
-			sendError(res, w, SC_SERVICE_UNAVAILABLE, e.getMessage());
-		} catch (LfsUnauthorized e) {
-			sendError(res, w, SC_UNAUTHORIZED, e.getMessage());
-		} catch (LfsException e) {
-			sendError(res, w, SC_INTERNAL_SERVER_ERROR, e.getMessage());
+ERNAL_SERVER_ERROR, e.getMessage());
 		} finally {
 			w.flush();
 		}
