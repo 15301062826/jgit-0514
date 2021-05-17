@@ -1,11 +1,5 @@
 /*
  * Copyright (C) 2018 Gabriel Couto <gmcouto@gmail.com>
- * and other copyright owners as documented in the project's IP log.
- *
- * This program and the accompanying materials are made available
- * under the terms of the Eclipse Distribution License v1.0 which
- * accompanies this distribution, is reproduced below, and is
- * available at http://www.eclipse.org/org/documents/edl-v10.php
  *
  * All rights reserved.
  *
